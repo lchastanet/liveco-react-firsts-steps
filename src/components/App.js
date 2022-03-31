@@ -3,6 +3,7 @@ import "../styles/App.css"
 import Header from "./Header"
 import HouseCard from "./HouseCard"
 import AvailabilityFilter from "./AvailabilityFilter"
+import TypeFilter from "./TypeFilter"
 
 import houseToRent from "../data/houseToRent.json"
 import { useState } from "react"
@@ -20,11 +21,7 @@ function App() {
             className="search-input"
             placeholder="🔎 Type to search"
           />
-          <select className="select" name="home">
-            <option value="All">All</option>
-            <option value="Flat">Flat</option>
-            <option value="House">House</option>
-          </select>
+          <TypeFilter houseToRent={houseToRent} setHouses={setHouses} />
           <AvailabilityFilter houseToRent={houseToRent} setHouses={setHouses} />
         </div>
         <div className="cards">

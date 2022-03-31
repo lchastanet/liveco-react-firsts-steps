@@ -7,7 +7,7 @@ export default function AvailabilityFilter({ houseToRent, setHouses }) {
     setChecked(!checked)
 
     const houseFiltered = houseToRent.filter((house) =>
-      !checked ? house.available === checked : true
+      !checked ? house.available === !checked : true
     )
 
     setHouses(houseFiltered)
