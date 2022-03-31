@@ -2,6 +2,8 @@ import "../styles/App.css"
 
 import Header from "./Header"
 
+import houseToRent from "../data/houseToRent"
+
 function App() {
   return (
     <div className="App">
