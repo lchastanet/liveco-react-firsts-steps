@@ -1,37 +1,55 @@
-import "../styles/App.css"
+import "../styles/App.css";
 
-import Header from "./Header"
-import HouseCard from "./HouseCard"
-import AvailabilityFilter from "./Filters/AvailabilityFilter"
-import TypeFilter from "./Filters/TypeFilter"
-import TextFilter from "./Filters/TextFilter"
+import Header from "./Header";
+import HouseCard from "./HouseCard";
+import AvailabilityFilter from "./Filters/AvailabilityFilter";
+import TypeFilter from "./Filters/TypeFilter";
+import TextFilter from "./Filters/TextFilter";
 
-import houseToRent from "../data/houseToRent.json"
-import { useState } from "react"
+import houseToRent from "../data/houseToRent.json";
+import { useState } from "react";
 
 function App() {
-  const [houses, setHouses] = useState(houseToRent)
-  const [checked, setChecked] = useState(false)
+  // const [houses, setHouses] = useState(houseToRent)
+  const [checked, setChecked] = useState(false);
+  const [text, setText] = useState("");
+  const [dropDown, setDropDown] = useState("All");
 
   const resetFilters = () => {
-    setHouses(houseToRent)
-    setChecked(false)
-  }
+    setChecked(false);
+    setText("");
+    setDropDown("All");
 
+    // setHouses(houseToRent)
+  };
+
+  const houses = houseToRent.filter((house) => {
+    let toKeep = true;
+
+    if (text !== "")
+      if (!house.name.toLowerCase().includes(text.toLowerCase()))
+        toKeep = false;
+    if (checked !== false)
+      if (!house.available)
+        toKeep = false;
+
+    if(dropDown !== "All")
+      if (house.type !== dropDown)
+        toKeep = false;
+
+    return toKeep
+  });
+
+  console.log(houses, checked, text, dropDown);
   return (
     <div className="App">
       <Header />
       <div className="wrapper">
         <div className="filters">
           <button onClick={resetFilters}>Reset Filters</button>
-          <TextFilter houseToRent={houses} setHouses={setHouses} />
-          <TypeFilter houseToRent={houses} setHouses={setHouses} />
-          <AvailabilityFilter
-            houseToRent={houses}
-            setHouses={setHouses}
-            checked={checked}
-            setChecked={setChecked}
-          />
+          <TextFilter text={text} setText={setText} />
+          <TypeFilter dropDown={dropDown} setDropDown={setDropDown} />
+          <AvailabilityFilter checked={checked} setChecked={setChecked} />
         </div>
         <div className="cards">
           {houses.map(({ name, desc, img }, index) => (
@@ -45,7 +63,7 @@ function App() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

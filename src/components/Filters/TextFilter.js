@@ -1,21 +1,28 @@
-export default function TextFilter({ houseToRent, setHouses }) {
-  const filterByText = (e) => {
-    const textInput = e.target.value
-
-    const regex = new RegExp(textInput, "i")
-
-    const houseFiltered = houseToRent.filter(
-      (house) => house.name.search(regex) >= 0
-    )
-
-    setHouses(houseFiltered)
+export default function TextFilter({ text, setText }) {
+  
+  const handleChange = (e) => {
+    setText(e.target.value)
   }
+
   return (
     <input
       type="text"
       className="search-input"
       placeholder="🔎 Type to search"
-      onChange={filterByText}
+      onChange={handleChange}
+      value={text}
     />
   )
 }
+
+// const filterByText = (e) => {
+//   const textInput = e.target.value
+
+//   const regex = new RegExp(textInput, "i")
+
+//   const houseFiltered = houseToRent.filter(
+//     (house) => house.name.search(regex) >= 0
+//   )
+
+//   setHouses(houseFiltered)
+// }

@@ -1,20 +1,21 @@
 import { useState } from "react"
 
 export default function AvailabilityFilter({
-  houseToRent,
-  setHouses,
   checked,
   setChecked,
 }) {
-  const filterByAvailability = () => {
-    setChecked(!checked)
-
-    const houseFiltered = houseToRent.filter((house) =>
-      !checked ? house.available === !checked : true
-    )
-
-    setHouses(houseFiltered)
+  const filterByAvailability = (e) => {
+    setChecked(e.target.checked)
   }
+
+  //   console.log("filterByAvailability");
+
+  //   const houseFiltered = houseToRent.filter((house) =>
+  //     checked ? house.available === true : true
+  //   )
+
+  //   setHouses(houseFiltered)
+  // }
 
   return (
     <div>
@@ -24,6 +25,7 @@ export default function AvailabilityFilter({
         className="available-checkbox"
         name="checkbox"
         onChange={filterByAvailability}
+        checked={checked}
       />
     </div>
   )
