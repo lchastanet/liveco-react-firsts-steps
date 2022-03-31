@@ -4,6 +4,7 @@ import Header from "./Header"
 import HouseCard from "./HouseCard"
 import AvailabilityFilter from "./AvailabilityFilter"
 import TypeFilter from "./TypeFilter"
+import TextFilter from "./TextFilter"
 
 import houseToRent from "../data/houseToRent.json"
 import { useState } from "react"
@@ -16,11 +17,7 @@ function App() {
       <Header />
       <div className="wrapper">
         <div className="filters">
-          <input
-            type="text"
-            className="search-input"
-            placeholder="🔎 Type to search"
-          />
+          <TextFilter houseToRent={houseToRent} setHouses={setHouses} />
           <TypeFilter houseToRent={houseToRent} setHouses={setHouses} />
           <AvailabilityFilter houseToRent={houseToRent} setHouses={setHouses} />
         </div>
