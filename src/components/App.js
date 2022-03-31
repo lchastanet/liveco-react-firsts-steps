@@ -1,10 +1,15 @@
 import "../styles/App.css"
 
 import Header from "./Header"
+import HouseCard from "./HouseCard"
+import AvailabilityFilter from "./AvailabilityFilter"
 
 import houseToRent from "../data/houseToRent.json"
+import { useState } from "react"
 
 function App() {
+  const [houses, setHouses] = useState(houseToRent)
+
   return (
     <div className="App">
       <Header />
@@ -20,17 +25,18 @@ function App() {
             <option value="Flat">Flat</option>
             <option value="House">House</option>
           </select>
-          <div>
-            <label htmlFor="available">Show only Available </label>
-            <input
-              type="checkbox"
-              className="available-checkbox"
-              name="checkbox"
-              id=""
-            />
-          </div>
+          <AvailabilityFilter houseToRent={houseToRent} setHouses={setHouses} />
         </div>
-        <div className="cards"></div>
+        <div className="cards">
+          {houses.map(({ name, desc, img }, index) => (
+            <HouseCard
+              key={`${name}_${index}`}
+              name={name}
+              desc={desc}
+              img={img}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
