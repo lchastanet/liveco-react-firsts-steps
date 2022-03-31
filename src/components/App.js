@@ -1,11 +1,11 @@
 import "../styles/App.css"
 
+import Header from "./Header"
+
 function App() {
   return (
     <div className="App">
-      <header>
-        <h1>🏠 Find your home</h1>
-      </header>
+      <Header />
       <div className="wrapper">
         <div className="filters">
           <input
