@@ -2,7 +2,7 @@ import "../styles/App.css"
 
 import Header from "./Header"
 
-import houseToRent from "../data/houseToRent"
+import houseToRent from "../data/houseToRent.json"
 
 function App() {
   return (
@@ -30,20 +30,7 @@ function App() {
             />
           </div>
         </div>
-        <div className="cards">
-          {/*
-    <div class="card">
-       <div class="card-header">
-          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80') "></div>
-        </div>
-      <div class="card-body">
-        <h2 class="card-title">Sample Card</h2>
-        <p class="card-description">This is just a sample card, take the structure of this card as an example for the function createCard</p>
-      <button class="card-button">I want it!</button>
-      </div>
-    </div>
-      </div> */}
-        </div>
+        <div className="cards"></div>
       </div>
     </div>
   )
