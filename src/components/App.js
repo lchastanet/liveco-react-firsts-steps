@@ -2,9 +2,9 @@ import "../styles/App.css"
 
 import Header from "./Header"
 import HouseCard from "./HouseCard"
-import AvailabilityFilter from "./AvailabilityFilter"
-import TypeFilter from "./TypeFilter"
-import TextFilter from "./TextFilter"
+import AvailabilityFilter from "./Filters/AvailabilityFilter"
+import TypeFilter from "./Filters/TypeFilter"
+import TextFilter from "./Filters/TextFilter"
 
 import houseToRent from "../data/houseToRent.json"
 import { useState } from "react"
