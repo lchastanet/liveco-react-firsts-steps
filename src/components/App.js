@@ -11,15 +11,27 @@ import { useState } from "react"
 
 function App() {
   const [houses, setHouses] = useState(houseToRent)
+  const [checked, setChecked] = useState(false)
+
+  const resetFilters = () => {
+    setHouses(houseToRent)
+    setChecked(false)
+  }
 
   return (
     <div className="App">
       <Header />
       <div className="wrapper">
         <div className="filters">
-          <TextFilter houseToRent={houseToRent} setHouses={setHouses} />
-          <TypeFilter houseToRent={houseToRent} setHouses={setHouses} />
-          <AvailabilityFilter houseToRent={houseToRent} setHouses={setHouses} />
+          <button onClick={resetFilters}>Reset Filters</button>
+          <TextFilter houseToRent={houses} setHouses={setHouses} />
+          <TypeFilter houseToRent={houses} setHouses={setHouses} />
+          <AvailabilityFilter
+            houseToRent={houses}
+            setHouses={setHouses}
+            checked={checked}
+            setChecked={setChecked}
+          />
         </div>
         <div className="cards">
           {houses.map(({ name, desc, img }, index) => (

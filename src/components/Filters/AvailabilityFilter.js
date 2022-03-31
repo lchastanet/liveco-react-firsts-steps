@@ -1,8 +1,11 @@
 import { useState } from "react"
 
-export default function AvailabilityFilter({ houseToRent, setHouses }) {
-  const [checked, setChecked] = useState(false)
-
+export default function AvailabilityFilter({
+  houseToRent,
+  setHouses,
+  checked,
+  setChecked,
+}) {
   const filterByAvailability = () => {
     setChecked(!checked)
 
